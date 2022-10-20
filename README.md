@@ -1,29 +1,34 @@
-# README #
+# Amazentis frontend challenge
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Requirements
 
-### What is this repository for? ###
+Please create a new `Button` component based on the designs in [Figma](https://www.figma.com/file/CJcS0dBmb2iUnXndbTHseG/Coding-Challenge?node-id=0%3A1). The component should live in the folder `src/components/Button` and all variants and interactions of the component should be viewable in storybook.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+A basic theme has been provided, please use this where possible and feel free to add/edit it if needed.
 
-### How do I get set up? ###
+## Tech stack
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+- React
+- TypeScript
+- Styled components
+- Storybook
 
-### Contribution guidelines ###
+## Available Scripts
 
-* Writing tests
-* Code review
-* Other guidelines
+In the project directory, you can run:
 
-### Who do I talk to? ###
+### `yarn start`
 
-* Repo owner or admin
-* Other community or team contact
+Runs storybook in the development mode.
+
+Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
+
+The page will reload if you make edits. You will also see any lint errors in the console.
+
+### `yarn build`
+
+Builds storybook for production to the `build` folder.
+
+### `yarn lint`
+
+Runs eslint to check for lint errors and warnings and auto fixes anything possible.
