@@ -1,7 +1,8 @@
 {
   "name": "frontend-challenge",
   "version": "0.1.0",
-  "author": "@amaze-bot",
+  "author": "Amazentis",
+  "license": "WTFPL",
   "scripts": {
     "start": "start-storybook -p 6006 -s public",
     "build": "build-storybook -s public",

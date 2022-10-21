@@ -15,11 +15,13 @@ A basic theme has been provided, please use this where possible and feel free to
 
 ## Available Scripts
 
-In the project directory, you can run:
+### `yarn`
+
+Runs yarn to install the project dependencies
 
 ### `yarn start`
 
-Runs storybook in the development mode.
+Runs storybook in development mode
 
 Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
