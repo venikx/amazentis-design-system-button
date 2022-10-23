@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { AriaButtonProps, useButton } from '@react-aria/button';
-import { useObjectRef } from '@react-aria/utils';
 import styled, { css } from 'styled-components';
 import { IStyleProps } from 'types';
 
@@ -58,11 +57,11 @@ const variants = {
   ghost: ghostStyle,
 } as const;
 
-// TODO(Kevin): hover state
 const StyledButton = styled.button<StyledButtonProps>`
   border: none;
   padding: 0;
   cursor: pointer;
+  position: relative;
 
   display: inline-flex;
   align-items: center;
@@ -72,9 +71,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-weight: ${(props) => props.theme.fontWeights.regular};
   font-size: ${(props) => props.theme.fontSizes.sm};
 
-  line-height: ${(props) => props.theme.lineHeights.tight};
+  line-height: ${(props) => props.theme.lineHeights.normal};
   letter-spacing: ${(props) => props.theme.letterSpacings.wider};
-  padding: ${(props) => `${props.theme.space.xs} ${props.theme.space.m}`};
+  padding: ${({ theme: { space } }) => `${space.xs} ${space.m}`};
   text-transform: uppercase;
 
   width: ${(props) => (props.fullWidth ? '100%' : 'auto')};
@@ -85,7 +84,28 @@ const StyledButton = styled.button<StyledButtonProps>`
     color: ${(props) => props.theme.colors.blackAlpha[500]};
   }
 
-  :hover {
+  transition: all 0.2s linear 0s;
+
+  :hover:not([disabled]) {
+    padding: ${({ theme: { space } }) => `${space.xs} ${space.sm} ${space.xs} calc(${space.m} + (${space.m} - ${space.sm}))`};
+  }
+
+  ::before {
+    content: ">";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 17px;
+    left: 28px;
+    transform: scale(0, 1);
+    transform-origin: left center;
+    transition: all 0.2s linear 0s;
+    font-size: ${(props) => props.theme.fontSizes.md};
+  }
+
+  :hover:not([disabled])::before {
+    transform: scale(1, 1);
   }
 `;
 
@@ -100,32 +120,29 @@ const StyledButton = styled.button<StyledButtonProps>`
  * how you wish to document the components it's usually better to write them in
  * mdx.
  */
-export const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(
-  (
-    {
-      variant = 'solid',
-      size = 'md',
-      fullWidth = false,
-      className,
-      ...props
-    }: IButtonProps,
-    ref,
-  ) => {
-    const buttonRef = useObjectRef(ref);
-    const { buttonProps, isPressed } = useButton(props, buttonRef);
-    const { children } = props;
-    const defaultProps = {
-      isPressed,
-      variant,
-      size,
-      fullWidth,
-      className,
-    };
+const Button = ({
+  variant = 'solid',
+  size = 'md',
+  fullWidth = false,
+  className,
+  ...props
+}: IButtonProps) => {
+  const buttonRef = useRef();
+  const { buttonProps, isPressed } = useButton(props, buttonRef);
+  const { children } = props;
+  const defaultProps = {
+    isPressed,
+    variant,
+    size,
+    fullWidth,
+    className,
+  };
 
-    return (
-      <StyledButton {...buttonProps} {...defaultProps} ref={buttonRef}>
-        {children}
-      </StyledButton>
-    );
-  },
-);
+  return (
+    <StyledButton {...buttonProps} {...defaultProps} ref={buttonRef}>
+      {children}
+    </StyledButton>
+  );
+};
+
+export default Button;

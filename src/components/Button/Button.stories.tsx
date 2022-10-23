@@ -1,7 +1,7 @@
 import React from 'react';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import styled from 'styled-components';
-import { Button, IButtonProps } from './Button';
+import Button, { type IButtonProps } from './Button';
 
 export default {
   title: 'Inputs/Button',
