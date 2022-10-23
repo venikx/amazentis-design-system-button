@@ -1,4 +1,7 @@
 export default {
+  transparent: 'transparent',
+  current: 'currentColor',
+  white: 'rgba(255, 255, 255, 1)',
   blackAlpha: {
     50: 'rgba(0, 0, 0, 0.04)',
     100: 'rgba(0, 0, 0, 0.06)',
