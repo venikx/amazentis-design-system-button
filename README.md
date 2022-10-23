@@ -1,5 +1,17 @@
 # Amazentis frontend challenge
 
+## My Notes
+
+I tried finding a use on the site for the accessible button, but it seems that
+chakra-ui handles the mobile gestures properly. Handling all the interactions
+isn't easy as by default the behaviors on mobile and desktop browsers aren't the
+same. See: https://react-spectrum.adobe.com/blog/building-a-button-part-1.html
+
+So, aside from your requirements I opted to create the Button as accessible as
+possible using one extra library `react-aria`. I try to think about
+accessibility as much as I can and the library bundles everything neatly in a
+hook.
+
 ## Requirements
 
 Please create a new `Button` component based on the designs in [Figma](https://www.figma.com/file/CJcS0dBmb2iUnXndbTHseG/Coding-Challenge?node-id=0%3A1). The component should live in the folder `src/components/Button` and all variants and interactions of the component should be viewable in storybook.
