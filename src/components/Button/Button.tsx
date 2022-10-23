@@ -35,6 +35,7 @@ const solidStyle = css<StyledButtonProps>`
   }
 `;
 const outlineStyle = css<StyledButtonProps>`
+  padding: ${({ theme: { space } }) => `calc(${space.xs} - 1px) calc(${space.m} - 1px)`};
   color: ${(props) => props.theme.colors.blackAlpha[900]};
   border: 1px solid currentcolor;
   background-color: ${(props) => (props.isPressed
