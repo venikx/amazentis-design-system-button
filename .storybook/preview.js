@@ -1,5 +1,5 @@
-import { ThemeProvider } from 'styled-components';
-import theme from '../src/theme'
+import { ThemeProvider } from "styled-components";
+import theme from "../src/theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,7 +9,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
 
 const withTheme = (StoryFn) => {
   return (
@@ -18,9 +18,7 @@ const withTheme = (StoryFn) => {
         <StoryFn />
       </div>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export const decorators = [
-  withTheme,
-]
+export const decorators = [withTheme];

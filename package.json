@@ -11,7 +11,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint --cache --fix",
-    "*.+(json|md)": "prettier --write"
+    "*": "prettier -u --write"
   },
   "browserslist": {
     "production": [
