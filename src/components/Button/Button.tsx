@@ -87,10 +87,6 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   transition: all 0.2s linear 0s;
 
-  :hover:not([disabled]) {
-    padding: ${({ theme: { space } }) => `${space.xs} ${space.sm} ${space.xs} calc(${space.m} + (${space.m} - ${space.sm}))`};
-  }
-
   ::before {
     content: ">";
     display: inline-flex;
@@ -107,6 +103,14 @@ const StyledButton = styled.button<StyledButtonProps>`
 
   :hover:not([disabled])::before {
     transform: scale(1, 1);
+  }
+
+  > span {
+    transition: inherit;
+  }
+
+  :hover:not([disabled]) > span {
+    transform: translateX(10px);
   }
 `;
 
@@ -141,7 +145,7 @@ const Button = ({
 
   return (
     <StyledButton {...buttonProps} {...defaultProps} ref={buttonRef}>
-      {children}
+      <span>{children}</span>
     </StyledButton>
   );
 };
